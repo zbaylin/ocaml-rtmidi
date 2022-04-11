@@ -15,3 +15,10 @@
   (synopsis "OCaml bindings to the RtMidi library")
   (depends
     (ocaml (>= 4.08.0))))
+
+(package
+  (name ocaml-rtmidi-lwt)
+  (synopsis "Lwt helpers for ocaml-rtmidi")
+  (depends
+    (ocaml-rtmidi :build)
+    (lwt (>= 5.5.0))))
