@@ -1,3 +1,32 @@
 (library
-  (name ocaml_rtmidi)
-  (public_name ocaml-rtmidi))
+ (name ocaml_rtmidi)
+ (libraries ctypes ctypes.foreign ocaml_rtmidi_types ocaml_rtmidi_bindings)
+ (foreign_stubs
+  (language c)
+  (names ocaml_rtmidi_generated_stubs)
+  (flags (-O0)))
+ (c_library_flags
+  (:include c_library_flags.sexp))
+ (public_name ocaml-rtmidi))
+
+(rule
+ (targets ocaml_rtmidi_generated_stubs.ml)
+ (deps ../gen_code/ocaml_rtmidi_gen_code.exe)
+ (action
+  (with-stdout-to
+   %{targets}
+   (run %{deps} ml))))
+
+(rule
+ (targets ocaml_rtmidi_generated_stubs.c)
+ (deps ../gen_code/ocaml_rtmidi_gen_code.exe)
+ (action
+  (with-stdout-to
+   %{targets}
+   (run %{deps} c))))
+
+(rule
+ (targets c_library_flags.sexp)
+ (deps ../config/c_library_flags.sexp)
+ (action
+  (copy %{deps} %{targets})))

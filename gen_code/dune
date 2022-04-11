@@ -1,0 +1,3 @@
+(executable
+ (name ocaml_rtmidi_gen_code)
+ (libraries ctypes ctypes.stubs cmdliner ocaml_rtmidi_bindings))
