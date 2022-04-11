@@ -1,0 +1,56 @@
+(library
+ (name ocaml_rtmidi_bindings)
+ (libraries ctypes ctypes.foreign ocaml_rtmidi_types)
+ (public_name ocaml-rtmidi.bindings))
+
+(rule
+ (targets librtmidi.a rtmidi_c.h)
+ (deps build_rtmidi.sh)
+ (action
+  (run bash %{deps})))
+
+(rule
+ (targets gen_types.c)
+ (deps ../gen_types/ocaml_rtmidi_gen_types.exe)
+ (action
+  (with-stdout-to
+   %{targets}
+   (run %{deps}))))
+
+(rule
+ (targets ctypes_path.txt)
+ (action
+  (with-stdout-to
+   %{targets}
+   (run ocamlfind query ctypes))))
+
+(rule
+ (targets c_library_flags.txt)
+ (deps ../config/c_library_flags.txt)
+ (action
+  (copy %{deps} %{targets})))
+
+(rule
+ (targets gen_types.exe)
+ (deps
+  rtmidi_c.h
+  (:c gen_types.c)
+  (:flags c_library_flags.txt)
+  (:ctypes_path ctypes_path.txt))
+ (action
+  (run
+   %{cxx}
+   %{c}
+   -I%{read-lines:ctypes_path.txt}
+   -I%{ocaml_where}
+   %{read-lines:c_library_flags.txt}
+   -o
+   %{targets})))
+
+(rule
+ (targets ocaml_rtmidi_generated_types.ml)
+ (deps gen_types.exe)
+ (action
+  (with-stdout-to
+   %{targets}
+   (run %{deps}))))

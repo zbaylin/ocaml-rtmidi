@@ -1,0 +1,9 @@
+(executable
+ (name ocaml_rtmidi_discover)
+ (libraries dune.configurator))
+
+(rule
+ (targets c_library_flags.txt c_library_flags.sexp)
+ (deps ocaml_rtmidi_discover.exe)
+ (action
+  (run %{deps})))
