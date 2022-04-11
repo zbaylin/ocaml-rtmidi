@@ -1,0 +1,4 @@
+(library
+ (name ocaml_rtmidi_lwt)
+ (public_name ocaml-rtmidi-lwt)
+ (libraries ocaml-rtmidi lwt.unix))
