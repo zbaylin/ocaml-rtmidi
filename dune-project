@@ -15,7 +15,7 @@
   (synopsis "OCaml bindings to the RtMidi library")
   (depends
     (ocaml (>= 4.08.0))
-    (ctypes (> 0.20.1))
+    (ctypes (>= 0.20.1))
     (ctypes-foreign :build)
     (cmdliner (>= 1.1.0))))
 
