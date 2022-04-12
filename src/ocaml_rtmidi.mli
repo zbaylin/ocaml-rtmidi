@@ -23,7 +23,7 @@ module In : sig
   val create_default : unit -> t
   val create : Api.t -> string -> Unsigned.UInt.t -> t
   val get_current_api : t -> Api.t
-  val get_message : t -> float * bytes
+  val get_message : t -> float * char array
   val ignore_types : sysex:bool -> time:bool -> sense:bool -> t -> unit
 end
 
