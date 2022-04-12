@@ -14,7 +14,10 @@
   (name ocaml-rtmidi)
   (synopsis "OCaml bindings to the RtMidi library")
   (depends
-    (ocaml (>= 4.08.0))))
+    (ocaml (>= 4.08.0))
+    (ctypes (> 0.20.1))
+    (ctypes-foreign :build)
+    (cmdliner (>= 1.1.0))))
 
 (package
   (name ocaml-rtmidi-lwt)
