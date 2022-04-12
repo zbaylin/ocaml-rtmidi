@@ -34,7 +34,7 @@ module Cli = struct
 end
 
 let pp_char_hex fmt char = Fmt.pf fmt "%x" (char |> Char.code)
-let pp_bytes_hex = Fmt.iter ~sep:(Fmt.any "") Bytes.iter pp_char_hex
+let pp_char_array_hex = Fmt.iter ~sep:(Fmt.any "") Array.iter pp_char_hex
 
 let listen_to p =
   let in_ = In.create_default () in
@@ -47,7 +47,7 @@ let listen_to p =
     | None -> helper ()
     | Some (dt, data) ->
         Logs_lwt.info (fun m ->
-            m "Received MIDI data: 0x%a (dt = %f)" pp_bytes_hex data dt)
+            m "Received MIDI data: 0x%a (dt = %f)" pp_char_array_hex data dt)
         >>= helper
   in
   Lwt_main.run @@ helper ()
