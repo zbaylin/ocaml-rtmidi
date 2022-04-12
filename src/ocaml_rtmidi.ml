@@ -55,7 +55,7 @@ module In = struct
       Bindings.In.get_message t (Some (CArray.start message_buffer)) len_ptr
     in
     let arr =
-      Array.init (!@len_ptr |> Unsigned.Size_t.to_int) (fun i ->
+      Bytes.init (!@len_ptr |> Unsigned.Size_t.to_int) (fun i ->
           CArray.get message_buffer i
           |> Unsigned.UChar.to_int |> Char.unsafe_chr)
     in
