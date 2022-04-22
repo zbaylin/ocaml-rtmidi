@@ -1,6 +1,6 @@
 (library
- (name ocaml_rtmidi_bindings)
- (libraries ctypes ctypes.foreign ocaml_rtmidi_types)
+ (name rtmidi_bindings)
+ (libraries ctypes ctypes.foreign rtmidi_types)
  (public_name ocaml-rtmidi.bindings))
 
 (rule
@@ -11,7 +11,7 @@
 
 (rule
  (targets gen_types.c)
- (deps ../gen_types/ocaml_rtmidi_gen_types.exe)
+ (deps ../gen_types/rtmidi_gen_types.exe)
  (action
   (with-stdout-to
    %{targets}
@@ -48,7 +48,7 @@
    %{targets})))
 
 (rule
- (targets ocaml_rtmidi_generated_types.ml)
+ (targets rtmidi_generated_types.ml)
  (deps gen_types.exe)
  (action
   (with-stdout-to

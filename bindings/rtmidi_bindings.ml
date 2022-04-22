@@ -1,5 +1,5 @@
 open Ctypes
-module Types = Ocaml_rtmidi_types.Make (Ocaml_rtmidi_generated_types)
+module Types = Rtmidi_types.Make (Rtmidi_generated_types)
 
 module Make (F : FOREIGN) = struct
   open F

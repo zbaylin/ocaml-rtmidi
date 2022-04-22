@@ -1,5 +1,5 @@
 open Ctypes
-module Bindings = Ocaml_rtmidi_bindings.Make (Ocaml_rtmidi_generated_stubs)
+module Bindings = Rtmidi_bindings.Make (Rtmidi_generated_stubs)
 
 type t = Bindings.t
 

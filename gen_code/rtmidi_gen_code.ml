@@ -15,7 +15,7 @@ let cmdline_term =
 
 let parse_cli () =
   let open Cmdliner in
-  let info = Cmd.info "ocaml_rtmidi_gen_code" in
+  let info = Cmd.info "rtmidi_gen_code" in
   match Cmd.eval_value (Cmd.v info cmdline_term) with
   | Ok (`Ok generate) -> generate
   | _ -> exit 1
@@ -29,9 +29,7 @@ let c_prologue = {|
 let () =
   match parse_cli () with
   | Ml ->
-      Cstubs.write_ml Format.std_formatter ~prefix
-        (module Ocaml_rtmidi_bindings.Make)
+      Cstubs.write_ml Format.std_formatter ~prefix (module Rtmidi_bindings.Make)
   | C ->
       print_endline c_prologue;
-      Cstubs.write_c Format.std_formatter ~prefix
-        (module Ocaml_rtmidi_bindings.Make)
+      Cstubs.write_c Format.std_formatter ~prefix (module Rtmidi_bindings.Make)
