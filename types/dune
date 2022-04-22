@@ -1,4 +1,4 @@
 (library
- (name ocaml_rtmidi_types)
+ (name rtmidi_types)
  (libraries ctypes)
  (public_name ocaml-rtmidi.types))

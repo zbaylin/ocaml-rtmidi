@@ -1,3 +1,3 @@
 (executable
- (name ocaml_rtmidi_gen_types)
- (libraries ocaml_rtmidi_types ctypes.stubs ctypes))
+ (name rtmidi_gen_types)
+ (libraries rtmidi_types ctypes.stubs ctypes))

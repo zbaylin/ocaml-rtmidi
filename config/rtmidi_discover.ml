@@ -25,7 +25,7 @@ let libs = function
   | Linux -> [ "-L."; "-lasound"; "-lpthread"; "-lrtmidi" ]
 
 let () =
-  main ~name:"ocaml_rtmidi_discover" (fun _ ->
+  main ~name:"rtmidi_discover" (fun _ ->
       let os = get_os () in
       write_lines "c_library_flags.txt" (libs os);
       write_sexp "c_library_flags.sexp" (libs os))

@@ -1,4 +1,4 @@
-open Ocaml_rtmidi
+open Rtmidi
 open Lwt.Infix
 
 module In = struct

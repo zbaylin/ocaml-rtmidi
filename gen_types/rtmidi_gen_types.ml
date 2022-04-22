@@ -4,4 +4,4 @@ let preamble = {|
 
 let () =
   print_endline preamble;
-  Cstubs.Types.write_c Format.std_formatter (module Ocaml_rtmidi_types.Make)
+  Cstubs.Types.write_c Format.std_formatter (module Rtmidi_types.Make)
